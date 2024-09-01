@@ -31,9 +31,9 @@ export const Hint = ({
                 <TooltipContent 
                     side={side} 
                     align={align} 
-                    className="bg-[#CEC7FB] border border-white/5"
+                    className="bg-[#090A0B] border border-white/5"
                 >
-                    <p className="font-medium text-xs">{label}</p>
+                    <p className="font-medium text-xs text-white">{label}</p>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>

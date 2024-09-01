@@ -5,8 +5,10 @@ import { Doc, Id } from "../../convex/_generated/dataModel";
 
 import { Hint } from "./hint";
 import { Thumbnail } from "./thumbnail";
+import { Toolbar } from "./toolbar";
 
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+
 
 
 
@@ -118,6 +120,17 @@ export const Message = ({
                 ): null}
             </div>
         </div>
+        {!isEditing && (
+            <Toolbar
+                isAuthor={isAuthor}
+                isPending={false}
+                handleEdit={() => setEditingId(id)}
+                handleThread={() => {}}
+                handleDelete={() => {}}
+                handleReaction={() => {}}
+                hideThreadButton={hideThreadButton}
+            />
+        )}
       </div>
     );
 };
