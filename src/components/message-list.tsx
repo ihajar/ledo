@@ -11,7 +11,9 @@ import { useCurrentMember } from "@/features/members/api/use-current-member";
 import { GetMessagesReturnType } from "@/features/messages/api/use-get-messages";
 
 import { ChannelHero } from "./channel-hero";
+import { ConversationHero } from "./conversation-hero";
 import { Message } from "./message";
+
 
 
 
@@ -141,6 +143,12 @@ export const MessageList = ({
             <ChannelHero
                 name={channelName}
                 creationTime={channelCreationTime}
+            />
+           )}
+            {variant === "conversation" &&  (
+            <ConversationHero
+                name={memberName}
+                image={memberImage}
             />
            )}
         </div>
