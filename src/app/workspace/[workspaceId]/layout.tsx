@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/resizable";
 
 import { Thread } from "@/features/messages/components/thread";
+import { Profile } from "@/features/members/components/profile";
 
 import { usePanel } from "@/hooks/use-panel";
 
@@ -19,15 +20,16 @@ import { WorkspaceSidebar } from "./workspace-sidebar";
 
 
 
+
 interface WokspaceIdLayoutProps {
     children: React.ReactNode;
 }
 
 
 const WorkspaceIdLayout = ({ children }: WokspaceIdLayoutProps) => {
-    const { parentMessageId, onClose } = usePanel();
+    const { parentMessageId, profileMemberId, onClose } = usePanel();
 
-    const showPanel = !!parentMessageId;
+    const showPanel = !!parentMessageId || !!profileMemberId;
     
     return ( 
         <div className="h-ful">
@@ -56,6 +58,11 @@ const WorkspaceIdLayout = ({ children }: WokspaceIdLayoutProps) => {
                                 {parentMessageId ? (
                                     <Thread
                                         messageId={parentMessageId as Id<"messages">}
+                                        onClose={onClose}
+                                    />
+                                ) : profileMemberId ? (
+                                    <Profile
+                                        memberId={profileMemberId as Id<"members">}
                                         onClose={onClose}
                                     />
                                 ) : (
