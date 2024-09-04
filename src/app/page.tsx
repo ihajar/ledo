@@ -1,13 +1,11 @@
-"use client"; 
+"use client";
 
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-
-import { UserButton } from "@/features/auth/components/user-button";
+import { Loader } from "lucide-react";
 
 import { useGetWorkspaces } from "@/features/workspaces/api/use-get-workspaces";
 import { useCreateWorkspaceModal } from "@/features/workspaces/store/use-create-workspace-modal";
-
 
 export default function Home() {
   const router = useRouter();
@@ -18,18 +16,18 @@ export default function Home() {
   const workspaceId = useMemo(() => data?.[0]?._id, [data]);
 
   useEffect(() => {
-    if(isLoading) return;
+    if (isLoading) return;
 
-    if(workspaceId) {
+    if (workspaceId) {
       router.replace(`/workspace/${workspaceId}`);
-    } else if(!open) {
+    } else if (!open) {
       setOpen(true);
     }
   }, [workspaceId, isLoading, open, setOpen, router]);
 
   return (
-    <div>
-      <UserButton />
+    <div className="h-full flex-1 flex items-center justify-center flex-col gap-2">
+      <Loader className="size-6 animate-spin text-muted-foreground" />
     </div>
   );
-};
+}
